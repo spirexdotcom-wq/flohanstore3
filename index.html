@@ -129,8 +129,8 @@
                             <i class="fa-solid fa-plus"></i> Pesan Sekarang
                         </button>
                     </div>
-    </div>
-                    <!-- Produk 5 -->
+                    </div>
+                                    <!-- Produk 5 -->
                 <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-pink-100 flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 bg-gray-100 overflow-hidden flex items-center justify-center">
@@ -210,17 +210,28 @@
 
                 <div class="border-t pt-4">
                     <div class="flex justify-between font-bold text-lg mb-4">
-                        <span>Total:</span>
+                        <span>Total (+ Ongkir):</span>
                         <span id="cart-total" class="text-pink-600">Rp 0</span>
                     </div>
 
                     <div id="checkout-form" class="space-y-3 mb-4">
                         <h4 class="font-semibold text-sm text-gray-700">Informasi Pengiriman</h4>
                         <input type="text" id="buyer-name" placeholder="Nama Lengkap" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
-                        <input type="email" id="buyer-email" placeholder="Alamat Email (Opsional/Aktif)" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
-                        <textarea id="buyer-address" placeholder="Alamat Lengkap (Jalan, RT/RW, Patokan)" rows="2" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70"></textarea>
+                        <input type="email" id="buyer-email" placeholder="Alamat Email Aktif" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
+                        
+                        <!-- Kolom Lokasi untuk Deteksi Otomatis Ongkir -->
+                        <input type="text" id="buyer-kecamatan" oninput="calculateShipping()" placeholder="Kecamatan (Contoh: Caringin / Ciawi / Tanah Abang)" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
+                        <input type="text" id="buyer-city" oninput="calculateShipping()" placeholder="Kota / Kabupaten (Contoh: Bogor / Jakarta Pusat)" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
+                        <input type="text" id="buyer-province" placeholder="Provinsi (Contoh: Jawa Barat)" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
+
+                        <textarea id="buyer-address" placeholder="Detail Alamat (Nama Jalan, No. Rumah, RT/RW)" rows="2" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70"></textarea>
                         <input type="tel" id="buyer-phone" placeholder="Nomor Handphone / WhatsApp" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
                         
+                        <!-- Keterangan Zona & Ongkir Otomatis -->
+                        <div id="shipping-info" class="bg-pink-50 border border-pink-200 p-2.5 rounded-xl text-xs text-pink-700 font-medium">
+                            🚚 Ketik Kecamatan & Kota untuk hitung ongkir otomatis.
+                        </div>
+
                         <!-- Checkbox Terms & Conditions -->
                         <div class="flex items-start gap-2 pt-1">
                             <input type="checkbox" id="agree-terms" class="mt-1 rounded border-pink-300 text-pink-600 focus:ring-pink-400 cursor-pointer">
@@ -261,9 +272,9 @@
                 <h3 class="text-xl font-bold mb-4 text-gray-800">Refund Policy (Kebijakan Pengembalian)</h3>
                 <div class="text-sm text-gray-600 space-y-2 mb-6">
                     <p>1. Karena produk kami berupa makanan kering dan cireng siap saji yang memiliki standar kehigienisan tinggi, barang yang sudah dibeli tidak dapat dikembalikan kecuali mengalami kerusakan parah saat diterima.</p>
-                    <p>2. Jika produk diterima dalam kondisi rusak, kemasan bocor, atau tidak sesuai pesanan, pembeli wajib melampirkan video unboxing (buka paket) yang jelas tanpa jeda maksimal 1x24 jam setelah paket diterima.</p>
-                    <p>3. Penggantian produk atau pengembalian dana (*refund*) akan diproses setelah diverifikasi melalui admin WhatsApp kami di nomor 081947677498.</p>
-                    <p>4. Biaya pengiriman untuk pengembalian barang akibat kesalahan toko akan ditanggung sepenuhnya oleh Flohan Store.</p>
+                    <p>2. Jika produk diterima dalam kondisi rusak, kemasan bocor, atau tidak sesuai pesanan, pembeli wajib melampirkan video unboxing yang jelas tanpa jeda maksimal 1x24 jam.</p>
+                    <p>3. Penggantian produk atau refund akan diproses setelah diverifikasi melalui admin WhatsApp di nomor 081947677498.</p>
+                    <p>4. Biaya pengiriman untuk pengembalian barang akibat kesalahan toko ditanggung sepenuhnya oleh Flohan Store.</p>
                 </div>
                 <button onclick="closeModal('refModal')" class="w-full bg-pink-500 text-white py-2.5 rounded-xl font-semibold cursor-pointer shadow-sm hover:bg-pink-600 transition">Tutup</button>
             </div>
@@ -275,8 +286,8 @@
                 <h3 class="text-xl font-bold mb-4 text-gray-800">Terms & Conditions</h3>
                 <div class="text-sm text-gray-600 space-y-2 mb-6">
                     <p>1. Dengan mengakses dan berbelanja di Flohan Store, Anda menyetujui seluruh syarat dan ketentuan yang berlaku.</p>
-                    <p>2. Setiap pesanan yang sudah dibayar melalui metode pembayaran yang tersedia akan segera diproses oleh tim kami sesuai antrean.</p>
-                    <p>3. Harga produk dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya, namun harga yang berlaku adalah harga pada saat checkout.</p>
+                    <p>2. Setiap pesanan yang sudah dibayar melalui metode pembayaran yang tersedia akan segera diproses oleh tim kami.</p>
+                    <p>3. Harga produk dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya, namun harga yang berlaku adalah harga saat checkout.</p>
                 </div>
                 <button onclick="closeModal('tcModal')" class="w-full bg-pink-500 text-white py-2.5 rounded-xl font-semibold cursor-pointer shadow-sm hover:bg-pink-600 transition">Tutup</button>
             </div>
@@ -286,24 +297,16 @@
         <div id="faqModal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
             <div class="bg-white/90 backdrop-blur-xl max-w-lg w-full p-6 rounded-3xl shadow-2xl max-h-[80vh] overflow-y-auto border border-pink-100">
                 <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
-                    <i class="fa-solid fa-circle-question text-pink-500"></i> FAQ (Pertanyaan yang Sering Diajukan)
+                    <i class="fa-solid fa-circle-question text-pink-500"></i> FAQ
                 </h3>
                 <div class="text-sm text-gray-600 space-y-3 mb-6">
                     <div>
-                        <p class="font-bold text-gray-800">Q: Bagaimana cara memesan produk di Flohan Store?</p>
-                        <p>A: Pilih produk yang Anda inginkan dari katalog, klik "Pesan Sekarang" untuk memasukkannya ke keranjang, isi data pengiriman, centang syarat & ketentuan, lalu pilih metode pembayaran Midtrans atau iPaymu.</p>
+                        <p class="font-bold text-gray-800">Q: Bagaimana cara memesan produk?</p>
+                        <p>A: Pilih produk, isi data & wilayah pengiriman (ongkir otomatis terhitung), centang S&K, lalu bayar via Midtrans atau iPaymu.</p>
                     </div>
                     <div>
-                        <p class="font-bold text-gray-800">Q: Apakah produk selalu *fresh* (baru dibuat)?</p>
-                        <p>A: Ya! Semua cireng isi dan kue kering di Flohan Store dibuat dengan bahan berkualitas dan higienis untuk menjaga kerenyahan serta rasanya.</p>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800">Q: Berapa lama waktu pengiriman pesanan?</p>
-                        <p>A: Pesanan akan diproses dan dikirimkan sesuai antrean setelah pembayaran dikonfirmasi. Estimasi waktu tergantung pada lokasi tujuan pengiriman dari Bogor.</p>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800">Q: Bagaimana jika ada kendala saat pembayaran?</p>
-                        <p>A: Anda bisa langsung menghubungi admin kami melalui tombol WhatsApp yang ada di pojok kanan bawah atau via kontak di bagian bawah website.</p>
+                        <p class="font-bold text-gray-800">Q: Apakah produk selalu fresh?</p>
+                        <p>A: Ya! Semua cireng isi dan kue kering dibuat dengan bahan berkualitas dan higienis.</p>
                     </div>
                 </div>
                 <button onclick="closeModal('faqModal')" class="w-full bg-pink-500 text-white py-2.5 rounded-xl font-semibold cursor-pointer shadow-sm hover:bg-pink-600 transition">Tutup</button>
@@ -340,8 +343,8 @@
                 </div>
             </div>
         </div>
-                        </div>
-                                    <!-- SCRIPT -->
+    </div>
+        <!-- SCRIPT -->
     <script>
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -362,6 +365,7 @@
         }
         
         let cart = [];
+        let currentShippingCost = 0;
 
         function toggleCart() {
             const modal = document.getElementById('cartModal');
@@ -391,6 +395,57 @@
             if (popup) popup.classList.add('hidden');
         }
 
+        // Fungsi Otomatis Deteksi Zona & Ongkir Berdasarkan Input Kota/Kecamatan
+        function calculateShipping() {
+            const kecamatanInput = document.getElementById('buyer-kecamatan').value.toLowerCase();
+            const cityInput = document.getElementById('buyer-city').value.toLowerCase();
+            const infoBox = document.getElementById('shipping-info');
+
+            let cost = 0;
+            let zonaName = '';
+
+            if (!kecamatanInput && !cityInput) {
+                currentShippingCost = 0;
+                infoBox.innerHTML = '🚚 Ketik Kecamatan & Kota untuk hitung ongkir otomatis.';
+                updateCartUI();
+                return;
+            }
+
+            // Logika Zona Berdasarkan Wilayah
+            if (kecamatanInput.includes('caringin') || kecamatanInput.includes('ciderum')) {
+                cost = 10000;
+                zonaName = 'Lokal Caringin / Kurir Toko';
+            } else if (kecamatanInput.includes('ciawi') || kecamatanInput.includes('cigombong') || kecamatanInput.includes('megamendung')) {
+                cost = 15000;
+                zonaName = 'Bogor Sekitar';
+            } else if (cityInput.includes('bogor') || cityInput.includes('depok')) {
+                cost = 20000;
+                zonaName = 'Bogor Kota / Depok';
+            } else if (cityInput.includes('jakarta') || cityInput.includes('tangerang') || cityInput.includes('bekasi')) {
+                cost = 25000;
+                zonaName = 'Jabodetabek';
+            } else if (cityInput.includes('bandung') || cityInput.includes('sukabumi') || cityInput.includes('cianjur') || cityInput.includes('garut')) {
+                cost = 25000;
+                zonaName = 'Jawa Barat Reguler';
+            } else if (cityInput.includes('semarang') || cityInput.includes('yogyakarta') || cityInput.includes('surabaya') || cityInput.includes('solo') || cityInput.includes('malang')) {
+                cost = 35000;
+                zonaName = 'Jawa Tengah & Jawa Timur';
+            } else if (cityInput.includes('medan') || cityInput.includes('palembang') || cityInput.includes('lampung') || cityInput.includes('padang')) {
+                cost = 45000;
+                zonaName = 'Sumatera';
+            } else if (cityInput) {
+                cost = 55000;
+                zonaName = 'Luar Jawa / Indonesia Timur';
+            } else {
+                cost = 25000;
+                zonaName = 'Standar Nasional';
+            }
+
+            currentShippingCost = cost;
+            infoBox.innerHTML = `✅ Terdeteksi Zona: <b>${zonaName}</b> | Ongkir: <b>Rp ${cost.toLocaleString()}</b>`;
+            updateCartUI();
+        }
+
         function updateCartUI() {
             const cartItemsContainer = document.getElementById('cart-items');
             const cartCount = document.getElementById('cart-count');
@@ -406,11 +461,11 @@
             }
 
             let html = '';
-            let total = 0;
+            let subtotalProducts = 0;
 
             cart.forEach((item, index) => {
                 let subtotal = item.price * item.qty;
-                total += subtotal;
+                subtotalProducts += subtotal;
                 html += `
                     <div class="flex justify-between items-center border-b pb-2">
                         <div>
@@ -425,8 +480,17 @@
                 `;
             });
 
+            // Tampilkan rincian ongkir di keranjang
+            html += `
+                <div class="flex justify-between items-center pt-2 text-xs text-gray-600 border-t">
+                    <span>Ongkos Kirim:</span>
+                    <span class="font-semibold">Rp ${currentShippingCost.toLocaleString()}</span>
+                </div>
+            `;
+
+            let grandTotal = subtotalProducts + currentShippingCost;
             if (cartItemsContainer) cartItemsContainer.innerHTML = html;
-            if (cartTotal) cartTotal.innerText = 'Rp ' + total.toLocaleString();
+            if (cartTotal) cartTotal.innerText = 'Rp ' + grandTotal.toLocaleString();
         }
 
         function removeFromCart(index) {
@@ -435,21 +499,27 @@
         }
 
         const WA_NUMBER = "6281947677498";
-        function prepareWhatsAppLink(orderId, name, email, address, phone, total) {
+        function prepareWhatsAppLink(orderId, name, email, kecamatan, city, province, address, phone, productTotal, shippingCost, total) {
             let itemListText = cart.map(item => `- ${item.name} (${item.qty}x)`).join('%0A');
-            let text = `Halo Admin Flohan Store, saya sudah melakukan pembayaran sukses.%0A%0A*ID Pesanan:* ${orderId}%0A*Nama:* ${name}%0A*Email:* ${email}%0A*No HP:* ${phone}%0A*Alamat:* ${address}%0A*Detail Pesanan:*%0A${itemListText}%0A*Total Bayar:* Rp ${total.toLocaleString()}%0A%0AMohon segera diproses ya, terima kasih!`;
+            let text = `Halo Admin Flohan Store, saya sudah melakukan pembayaran sukses.%0A%0A*ID Pesanan:* ${orderId}%0A*Nama:* ${name}%0A*Email:* ${email}%0A*No HP:* ${phone}%0A*Alamat Lengkap:* ${address}, Kec. ${kecamatan}, Kota/Kab. ${city}, Prov. ${province}%0A%0A*Detail Pesanan:*%0A${itemListText}%0A*Subtotal Produk:* Rp ${productTotal.toLocaleString()}%0A*Ongkos Kirim:* Rp ${shippingCost.toLocaleString()}%0A*Total Bayar:* Rp ${total.toLocaleString()}%0A%0AMohon segera diproses ya, terima kasih!`;
             return `https://wa.me/${WA_NUMBER}?text=${text}`;
         }
 
         async function checkout() {
             const nameField = document.getElementById('buyer-name');
             const emailField = document.getElementById('buyer-email');
+            const kecamatanField = document.getElementById('buyer-kecamatan');
+            const cityField = document.getElementById('buyer-city');
+            const provinceField = document.getElementById('buyer-province');
             const addressField = document.getElementById('buyer-address');
             const phoneField = document.getElementById('buyer-phone');
             const agreeTerms = document.getElementById('agree-terms');
 
             const name = nameField ? nameField.value.trim() : '';
             const email = emailField ? emailField.value.trim() : '';
+            const kecamatan = kecamatanField ? kecamatanField.value.trim() : '';
+            const city = cityField ? cityField.value.trim() : '';
+            const province = provinceField ? provinceField.value.trim() : '';
             const address = addressField ? addressField.value.trim() : '';
             const phone = phoneField ? phoneField.value.trim() : '';
 
@@ -458,8 +528,8 @@
                 return;
             }
 
-            if (!name || !email || !address || !phone) {
-                alert('Mohon lengkapi Nama, Email, Alamat Lengkap, dan Nomor Handphone terlebih dahulu!');
+            if (!name || !email || !kecamatan || !city || !province || !address || !phone) {
+                alert('Mohon lengkapi seluruh data pengiriman (Nama, Email, Kecamatan, Kota, Provinsi, Alamat, & No HP)!');
                 return;
             }
 
@@ -468,10 +538,10 @@
                 return;
             }
 
-            let total = 0;
+            let productTotal = 0;
             let items = [];
             cart.forEach(item => {
-                total += item.price * item.qty;
+                productTotal += item.price * item.qty;
                 items.push({
                     id: item.name,
                     price: item.price,
@@ -479,6 +549,17 @@
                     name: item.name
                 });
             });
+
+            // Tambahkan ongkir sebagai item atau gross amount di Midtrans
+            let grossAmount = productTotal + currentShippingCost;
+            if (currentShippingCost > 0) {
+                items.push({
+                    id: 'ONGKIR',
+                    price: currentShippingCost,
+                    quantity: 1,
+                    name: 'Ongkos Kirim (' + city + ')'
+                });
+            }
 
             const orderId = 'FLOHAN-' + Date.now();
 
@@ -488,7 +569,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         order_id: orderId,
-                        gross_amount: total,
+                        gross_amount: grossAmount,
                         customer_details: {
                             first_name: name,
                             email: email,
@@ -502,7 +583,7 @@
                 if (data.token) {
                     window.snap.pay(data.token, {
                         onSuccess: function(result){ 
-                            const waUrl = prepareWhatsAppLink(orderId, name, email, address, phone, total);
+                            const waUrl = prepareWhatsAppLink(orderId, name, email, kecamatan, city, province, address, phone, productTotal, currentShippingCost, grossAmount);
                             document.getElementById('waConfirmBtn').setAttribute('href', waUrl);
                             document.getElementById('paymentSuccessModal').classList.remove('hidden');
                         },
@@ -521,12 +602,18 @@
         async function checkoutIpaymu() {
             const nameField = document.getElementById('buyer-name');
             const emailField = document.getElementById('buyer-email');
+            const kecamatanField = document.getElementById('buyer-kecamatan');
+            const cityField = document.getElementById('buyer-city');
+            const provinceField = document.getElementById('buyer-province');
             const addressField = document.getElementById('buyer-address');
             const phoneField = document.getElementById('buyer-phone');
             const agreeTerms = document.getElementById('agree-terms');
 
             const name = nameField ? nameField.value.trim() : '';
             const email = emailField ? emailField.value.trim() : '';
+            const kecamatan = kecamatanField ? kecamatanField.value.trim() : '';
+            const city = cityField ? cityField.value.trim() : '';
+            const province = provinceField ? provinceField.value.trim() : '';
             const address = addressField ? addressField.value.trim() : '';
             const phone = phoneField ? phoneField.value.trim() : '';
 
@@ -535,8 +622,8 @@
                 return;
             }
 
-            if (!name || !email || !address || !phone) {
-                alert('Mohon lengkapi Nama, Email, Alamat Lengkap, dan Nomor Handphone terlebih dahulu!');
+            if (!name || !email || !kecamatan || !city || !province || !address || !phone) {
+                alert('Mohon lengkapi seluruh data pengiriman (Nama, Email, Kecamatan, Kota, Provinsi, Alamat, & No HP)!');
                 return;
             }
 
@@ -545,10 +632,10 @@
                 return;
             }
 
-            let total = 0;
+            let productTotal = 0;
             let items = [];
             cart.forEach(item => {
-                total += item.price * item.qty;
+                productTotal += item.price * item.qty;
                 items.push({
                     id: item.name,
                     price: item.price,
@@ -557,6 +644,16 @@
                 });
             });
 
+            let grossAmount = productTotal + currentShippingCost;
+            if (currentShippingCost > 0) {
+                items.push({
+                    id: 'ONGKIR',
+                    price: currentShippingCost,
+                    quantity: 1,
+                    name: 'Ongkos Kirim (' + city + ')'
+                });
+            }
+
             const orderId = 'FLOHAN-' + Date.now();
             try {
                 const response = await fetch('https://flohanstore-3-backend.vercel.app/api/ipaymu/create-transaction', {
@@ -564,7 +661,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         order_id: orderId,
-                        gross_amount: total,
+                        gross_amount: grossAmount,
                         customer_details: {
                             first_name: name,
                             email: email,
