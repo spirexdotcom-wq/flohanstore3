@@ -6,9 +6,7 @@
     <title>Flohan Store - Makanan Kering & Lezat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script type="text/javascript"
-src="https://app.sandbox.midtrans.com/snap/snap.js"
-data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
     <style>
         @keyframes bounceIn {
             0% { transform: scale(0.8); opacity: 0; }
@@ -131,9 +129,8 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                             <i class="fa-solid fa-plus"></i> Pesan Sekarang
                         </button>
                     </div>
-                </div>
-
-                <!-- Produk 5 -->
+    </div>
+                    <!-- Produk 5 -->
                 <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-pink-100 flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 bg-gray-100 overflow-hidden flex items-center justify-center">
@@ -191,15 +188,16 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                 </div>
 
             </div>
-            </main>
-            <!-- FLOATING WHATSAPP -->
+        </main>
+
+        <!-- FLOATING WHATSAPP -->
         <a href="https://wa.me/6281947677498?text=Halo%20Flohan%20Store,%20saya%20ingin%20bertanya%20terkait%20produk" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition z-30 text-2xl">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
 
         <!-- MODAL KERANJANG -->
-        <div id="cartModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex justify-end">
-            <div class="bg-white/95 backdrop-blur-md w-full max-w-md h-full p-6 overflow-y-auto flex flex-col justify-between shadow-2xl border-l border-pink-100">
+        <div id="cartModal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex justify-end">
+            <div class="bg-white/90 backdrop-blur-xl w-full max-w-md h-full p-6 overflow-y-auto flex flex-col justify-between shadow-2xl border-l border-pink-100">
                 <div>
                     <div class="flex justify-between items-center border-b pb-4 mb-4">
                         <h3 class="text-xl font-bold text-gray-800">Keranjang Belanja</h3>
@@ -218,9 +216,18 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
 
                     <div id="checkout-form" class="space-y-3 mb-4">
                         <h4 class="font-semibold text-sm text-gray-700">Informasi Pengiriman</h4>
-                        <input type="text" id="buyer-name" placeholder="Nama Lengkap" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/50">
-                        <textarea id="buyer-address" placeholder="Alamat Lengkap (Jalan, RT/RW, Patokan)" rows="2" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/50"></textarea>
-                        <input type="tel" id="buyer-phone" placeholder="Nomor Handphone / WhatsApp" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/50">
+                        <input type="text" id="buyer-name" placeholder="Nama Lengkap" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
+                        <input type="email" id="buyer-email" placeholder="Alamat Email (Opsional/Aktif)" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
+                        <textarea id="buyer-address" placeholder="Alamat Lengkap (Jalan, RT/RW, Patokan)" rows="2" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70"></textarea>
+                        <input type="tel" id="buyer-phone" placeholder="Nomor Handphone / WhatsApp" class="w-full border border-pink-200 px-3 py-2 rounded-xl text-sm focus:outline-pink-400 bg-white/70">
+                        
+                        <!-- Checkbox Terms & Conditions -->
+                        <div class="flex items-start gap-2 pt-1">
+                            <input type="checkbox" id="agree-terms" class="mt-1 rounded border-pink-300 text-pink-600 focus:ring-pink-400 cursor-pointer">
+                            <label for="agree-terms" class="text-xs text-gray-600 cursor-pointer">
+                                Saya menyetujui <span onclick="openModal('tcModal')" class="text-pink-600 underline font-medium">Syarat & Ketentuan</span> serta Kebijakan Privasi Flohan Store.
+                            </label>
+                        </div>
                     </div>
 
                     <div class="space-y-2 w-full">
@@ -236,21 +243,21 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
         </div>
 
         <!-- MODAL PRIVACY POLICY -->
-        <div id="ppModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-            <div class="bg-white/95 backdrop-blur-md max-w-lg w-full p-6 rounded-2xl shadow-2xl max-h-[80vh] overflow-y-auto border border-pink-100">
+        <div id="ppModal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white/90 backdrop-blur-xl max-w-lg w-full p-6 rounded-3xl shadow-2xl max-h-[80vh] overflow-y-auto border border-pink-100">
                 <h3 class="text-xl font-bold mb-4 text-gray-800">Privacy Policy</h3>
                 <div class="text-sm text-gray-600 space-y-2 mb-6">
                     <p>1. Kebijakan privasi ini menjelaskan bagaimana Flohan Store mengumpulkan dan melindungi informasi pribadi Anda.</p>
-                    <p>2. Informasi seperti nama, alamat, dan nomor telepon yang Anda masukkan pada saat checkout hanya digunakan untuk keperluan pengiriman pesanan.</p>
+                    <p>2. Informasi seperti nama, email, alamat, dan nomor telepon yang Anda masukkan pada saat checkout hanya digunakan untuk keperluan pengiriman pesanan.</p>
                     <p>3. Kami berkomitmen untuk menjaga kerahasiaan data pribadi Anda dan tidak akan membagikannya kepada pihak ketiga tanpa izin.</p>
                 </div>
-                <button onclick="closeModal('ppModal')" class="w-full bg-pink-500 text-white py-2.5 rounded-xl font-semibold cursor-pointer shadow-sm">Tutup</button>
+                <button onclick="closeModal('ppModal')" class="w-full bg-pink-500 text-white py-2.5 rounded-xl font-semibold cursor-pointer shadow-sm hover:bg-pink-600 transition">Tutup</button>
             </div>
         </div>
 
         <!-- MODAL REFUND POLICY -->
-        <div id="refModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-            <div class="bg-white/95 backdrop-blur-md max-w-lg w-full p-6 rounded-2xl shadow-2xl max-h-[80vh] overflow-y-auto border border-pink-100">
+        <div id="refModal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white/90 backdrop-blur-xl max-w-lg w-full p-6 rounded-3xl shadow-2xl max-h-[80vh] overflow-y-auto border border-pink-100">
                 <h3 class="text-xl font-bold mb-4 text-gray-800">Refund Policy (Kebijakan Pengembalian)</h3>
                 <div class="text-sm text-gray-600 space-y-2 mb-6">
                     <p>1. Karena produk kami berupa makanan kering dan cireng siap saji yang memiliki standar kehigienisan tinggi, barang yang sudah dibeli tidak dapat dikembalikan kecuali mengalami kerusakan parah saat diterima.</p>
@@ -258,33 +265,33 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                     <p>3. Penggantian produk atau pengembalian dana (*refund*) akan diproses setelah diverifikasi melalui admin WhatsApp kami di nomor 081947677498.</p>
                     <p>4. Biaya pengiriman untuk pengembalian barang akibat kesalahan toko akan ditanggung sepenuhnya oleh Flohan Store.</p>
                 </div>
-                <button onclick="closeModal('refModal')" class="w-full bg-pink-500 text-white py-2.5 rounded-xl font-semibold cursor-pointer shadow-sm">Tutup</button>
+                <button onclick="closeModal('refModal')" class="w-full bg-pink-500 text-white py-2.5 rounded-xl font-semibold cursor-pointer shadow-sm hover:bg-pink-600 transition">Tutup</button>
             </div>
         </div>
 
         <!-- MODAL TERMS & CONDITIONS -->
-        <div id="tcModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-            <div class="bg-white/95 backdrop-blur-md max-w-lg w-full p-6 rounded-2xl shadow-2xl max-h-[80vh] overflow-y-auto border border-pink-100">
+        <div id="tcModal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white/90 backdrop-blur-xl max-w-lg w-full p-6 rounded-3xl shadow-2xl max-h-[80vh] overflow-y-auto border border-pink-100">
                 <h3 class="text-xl font-bold mb-4 text-gray-800">Terms & Conditions</h3>
                 <div class="text-sm text-gray-600 space-y-2 mb-6">
                     <p>1. Dengan mengakses dan berbelanja di Flohan Store, Anda menyetujui seluruh syarat dan ketentuan yang berlaku.</p>
                     <p>2. Setiap pesanan yang sudah dibayar melalui metode pembayaran yang tersedia akan segera diproses oleh tim kami sesuai antrean.</p>
                     <p>3. Harga produk dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya, namun harga yang berlaku adalah harga pada saat checkout.</p>
                 </div>
-                <button onclick="closeModal('tcModal')" class="w-full bg-pink-500 text-white py-2.5 rounded-xl font-semibold cursor-pointer shadow-sm">Tutup</button>
+                <button onclick="closeModal('tcModal')" class="w-full bg-pink-500 text-white py-2.5 rounded-xl font-semibold cursor-pointer shadow-sm hover:bg-pink-600 transition">Tutup</button>
             </div>
         </div>
 
         <!-- MODAL FAQ -->
-        <div id="faqModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-            <div class="bg-white/95 backdrop-blur-md max-w-lg w-full p-6 rounded-2xl shadow-2xl max-h-[80vh] overflow-y-auto border border-pink-100">
+        <div id="faqModal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white/90 backdrop-blur-xl max-w-lg w-full p-6 rounded-3xl shadow-2xl max-h-[80vh] overflow-y-auto border border-pink-100">
                 <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
                     <i class="fa-solid fa-circle-question text-pink-500"></i> FAQ (Pertanyaan yang Sering Diajukan)
                 </h3>
                 <div class="text-sm text-gray-600 space-y-3 mb-6">
                     <div>
                         <p class="font-bold text-gray-800">Q: Bagaimana cara memesan produk di Flohan Store?</p>
-                        <p>A: Pilih produk yang Anda inginkan dari katalog, klik "Pesan Sekarang" untuk memasukkannya ke keranjang, isi data pengiriman, lalu pilih metode pembayaran Midtrans atau iPaymu.</p>
+                        <p>A: Pilih produk yang Anda inginkan dari katalog, klik "Pesan Sekarang" untuk memasukkannya ke keranjang, isi data pengiriman, centang syarat & ketentuan, lalu pilih metode pembayaran Midtrans atau iPaymu.</p>
                     </div>
                     <div>
                         <p class="font-bold text-gray-800">Q: Apakah produk selalu *fresh* (baru dibuat)?</p>
@@ -304,20 +311,20 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
         </div>
 
         <!-- ANIMATED POPUP NOTIFICATION -->
-        <div id="cartAnimationPopup" class="fixed inset-0 z-50 hidden flex items-center justify-center pointer-events-none">
-            <div class="bg-white/95 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-pink-200 text-center animate-bounce-in max-w-xs mx-4 pointer-events-auto">
+        <div id="cartAnimationPopup" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center pointer-events-auto">
+            <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-pink-200 text-center animate-bounce-in max-w-xs mx-4">
                 <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
                     <i class="fa-solid fa-cart-shopping text-3xl text-pink-500 animate-bounce"></i>
                 </div>
                 <h4 id="popup-product-name" class="font-bold text-gray-800 text-lg mb-1">Berhasil Masuk Keranjang!</h4>
                 <p class="text-xs text-gray-500 mb-4">Produk telah ditambahkan ke keranjang belanja Anda.</p>
-                <button onclick="closeCartPopup()" class="w-full bg-pink-500 text-white py-2 rounded-xl text-sm font-bold shadow hover:bg-pink-600 transition">Lanjut Belanja</button>
+                <button onclick="closeCartPopup()" class="w-full bg-pink-500 text-white py-2 rounded-xl text-sm font-bold shadow hover:bg-pink-600 transition cursor-pointer">Lanjut Belanja</button>
             </div>
         </div>
 
         <!-- ANIMATED PAYMENT SUCCESS POPUP -->
-        <div id="paymentSuccessModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-            <div class="bg-white/95 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-pink-200 text-center animate-bounce-in max-w-sm w-full">
+        <div id="paymentSuccessModal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white/90 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-pink-200 text-center animate-bounce-in max-w-sm w-full">
                 <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner">
                     <i class="fa-solid fa-circle-check text-5xl text-green-500 animate-pulse"></i>
                 </div>
@@ -327,14 +334,14 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                     <a id="waConfirmBtn" href="#" target="_blank" class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl text-sm font-bold shadow-md flex items-center justify-center gap-2 transition">
                         <i class="fa-brands fa-whatsapp text-lg"></i> Konfirmasi ke WhatsApp
                     </a>
-                    <button onclick="closeSuccessModal()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-2.5 rounded-xl text-sm font-semibold transition">
+                    <button onclick="closeSuccessModal()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-2.5 rounded-xl text-sm font-semibold transition cursor-pointer">
                         Tutup
                     </button>
                 </div>
             </div>
         </div>
-            </div>
-        <!-- SCRIPT -->
+                        </div>
+                                    <!-- SCRIPT -->
     <script>
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -412,7 +419,7 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="font-bold text-sm">Rp ${subtotal.toLocaleString()}</span>
-                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 text-sm">🗑️</button>
+                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 text-sm cursor-pointer">🗑️</button>
                         </div>
                     </div>
                 `;
@@ -428,18 +435,21 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
         }
 
         const WA_NUMBER = "6281947677498";
-        function prepareWhatsAppLink(orderId, name, address, phone, total) {
+        function prepareWhatsAppLink(orderId, name, email, address, phone, total) {
             let itemListText = cart.map(item => `- ${item.name} (${item.qty}x)`).join('%0A');
-            let text = `Halo Admin Flohan Store, saya sudah melakukan pembayaran sukses.%0A%0A*ID Pesanan:* ${orderId}%0A*Nama:* ${name}%0A*No HP:* ${phone}%0A*Alamat:* ${address}%0A*Detail Pesanan:*%0A${itemListText}%0A*Total Bayar:* Rp ${total.toLocaleString()}%0A%0AMohon segera diproses ya, terima kasih!`;
+            let text = `Halo Admin Flohan Store, saya sudah melakukan pembayaran sukses.%0A%0A*ID Pesanan:* ${orderId}%0A*Nama:* ${name}%0A*Email:* ${email}%0A*No HP:* ${phone}%0A*Alamat:* ${address}%0A*Detail Pesanan:*%0A${itemListText}%0A*Total Bayar:* Rp ${total.toLocaleString()}%0A%0AMohon segera diproses ya, terima kasih!`;
             return `https://wa.me/${WA_NUMBER}?text=${text}`;
         }
 
         async function checkout() {
             const nameField = document.getElementById('buyer-name');
+            const emailField = document.getElementById('buyer-email');
             const addressField = document.getElementById('buyer-address');
             const phoneField = document.getElementById('buyer-phone');
+            const agreeTerms = document.getElementById('agree-terms');
 
             const name = nameField ? nameField.value.trim() : '';
+            const email = emailField ? emailField.value.trim() : '';
             const address = addressField ? addressField.value.trim() : '';
             const phone = phoneField ? phoneField.value.trim() : '';
 
@@ -448,8 +458,13 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                 return;
             }
 
-            if (!name || !address || !phone) {
-                alert('Mohon lengkapi Nama, Alamat Lengkap, dan Nomor Handphone terlebih dahulu!');
+            if (!name || !email || !address || !phone) {
+                alert('Mohon lengkapi Nama, Email, Alamat Lengkap, dan Nomor Handphone terlebih dahulu!');
+                return;
+            }
+
+            if (!agreeTerms || !agreeTerms.checked) {
+                alert('Anda harus menyetujui Syarat & Ketentuan terlebih dahulu sebelum melakukan pembayaran!');
                 return;
             }
 
@@ -476,6 +491,7 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                         gross_amount: total,
                         customer_details: {
                             first_name: name,
+                            email: email,
                             phone: phone
                         },
                         item_details: items
@@ -486,7 +502,7 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                 if (data.token) {
                     window.snap.pay(data.token, {
                         onSuccess: function(result){ 
-                            const waUrl = prepareWhatsAppLink(orderId, name, address, phone, total);
+                            const waUrl = prepareWhatsAppLink(orderId, name, email, address, phone, total);
                             document.getElementById('waConfirmBtn').setAttribute('href', waUrl);
                             document.getElementById('paymentSuccessModal').classList.remove('hidden');
                         },
@@ -504,10 +520,13 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
 
         async function checkoutIpaymu() {
             const nameField = document.getElementById('buyer-name');
+            const emailField = document.getElementById('buyer-email');
             const addressField = document.getElementById('buyer-address');
             const phoneField = document.getElementById('buyer-phone');
+            const agreeTerms = document.getElementById('agree-terms');
 
             const name = nameField ? nameField.value.trim() : '';
+            const email = emailField ? emailField.value.trim() : '';
             const address = addressField ? addressField.value.trim() : '';
             const phone = phoneField ? phoneField.value.trim() : '';
 
@@ -516,8 +535,13 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                 return;
             }
 
-            if (!name || !address || !phone) {
-                alert('Mohon lengkapi Nama, Alamat Lengkap, dan Nomor Handphone terlebih dahulu!');
+            if (!name || !email || !address || !phone) {
+                alert('Mohon lengkapi Nama, Email, Alamat Lengkap, dan Nomor Handphone terlebih dahulu!');
+                return;
+            }
+
+            if (!agreeTerms || !agreeTerms.checked) {
+                alert('Anda harus menyetujui Syarat & Ketentuan terlebih dahulu sebelum melakukan pembayaran!');
                 return;
             }
 
@@ -534,7 +558,6 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
             });
 
             const orderId = 'FLOHAN-' + Date.now();
-
             try {
                 const response = await fetch('https://flohanstore-3-backend.vercel.app/api/ipaymu/create-transaction', {
                     method: 'POST',
@@ -544,6 +567,7 @@ data-client-key="Mid-client-IW7jn8AXPQfQlidH"></script>
                         gross_amount: total,
                         customer_details: {
                             first_name: name,
+                            email: email,
                             phone: phone
                         },
                         item_details: items
